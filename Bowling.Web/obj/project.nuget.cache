@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "tlCF8A+ILPQ8g1dnd83nQSnxyeHTQzONwlIefpIW8Dd8NetnwkeQ2bfSsfrUY8CqxczcITkTACrauYT67obE6Q==",
+  "success": true,
+  "projectFilePath": "D:\\felipe\\projects\\project-benchmark\\training\\bowling-game\\bowling-clean-architecture\\Bowling.Web\\Bowling.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\felipe.canaviri\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
