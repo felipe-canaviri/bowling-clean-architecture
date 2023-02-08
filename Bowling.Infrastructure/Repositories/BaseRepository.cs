@@ -21,11 +21,6 @@ namespace Bowling.Infrastructure.Repositories
             await dbSet.AddAsync(entity);
         }
 
-        public virtual async Task AddRangeAsync(IEnumerable<T> entities)
-        {
-            await dbSet.AddRangeAsync(entities);
-        }
-
         public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await dbSet.ToListAsync();
@@ -64,11 +59,6 @@ namespace Bowling.Infrastructure.Repositories
             dbSet.Remove(entity);
         }
 
-        public virtual void RemoveRange(IEnumerable<T> entities)
-        {
-            dbSet.RemoveRange(entities);
-        }
-
         public virtual async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
         {
             return await dbSet.SingleOrDefaultAsync(predicate);
@@ -78,12 +68,6 @@ namespace Bowling.Infrastructure.Repositories
         {
             dbSet.Attach(entityToUpdate);
             Context.Entry(entityToUpdate).State = EntityState.Modified;
-        }
-
-        public virtual async Task UpdateRange(IEnumerable<T> entitiesToUpdate)
-        {
-            dbSet.AttachRange(entitiesToUpdate);
-            Context.Entry(entitiesToUpdate).State = EntityState.Modified;
         }
     }
 }

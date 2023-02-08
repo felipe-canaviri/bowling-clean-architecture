@@ -1,8 +1,15 @@
-﻿namespace Bowling.Core.Interfaces.Services
+﻿using Bowling.Core.Entities;
+
+namespace Bowling.Core.Interfaces.Services
 {
     
     public interface IPlayerService
     {
-        // TODO: Improve services classes to be generic
+        Task<Player> GetPlayerById(int id);
+        Task<IEnumerable<Player>> GetAll();
+        Task<IEnumerable<Player>> GetAllByGameId(int gameId);
+        Task<Player> CreatePlayer(Player player);
+        Task<Player> UpdateGame(int playerToBeUpdatedId, Player newPlayerValues);
+        Task DeleteGame(int playerId);
     }
 }

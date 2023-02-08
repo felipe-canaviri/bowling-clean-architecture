@@ -10,11 +10,8 @@ namespace Bowling.Core.Interfaces.Repositories
                                     Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                                     string includeProperties = "");
         Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate);
-        Task AddAsync(T entity);
-        Task AddRangeAsync(IEnumerable<T> entities);
-        void Remove(T entity);
-        void RemoveRange(IEnumerable<T> entities);
+        Task AddAsync(T entity);        
+        void Remove(T entity);        
         Task Update(T entityToUpdate);
-        Task UpdateRange(IEnumerable<T> entitiesToUpdate);
     }
 }
