@@ -1,11 +1,6 @@
 ﻿using Bowling.Core.Entities;
 using Bowling.Core.Interfaces;
 using Bowling.Core.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bowling.Services
 {
@@ -18,7 +13,7 @@ namespace Bowling.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Player> CreatePlayer(Player player)
+        public async Task<Player> Save(Player player)
         {
             await _unitOfWork.PlayerRepository.AddAsync(player);
             await _unitOfWork.CommitAsync();
@@ -26,30 +21,30 @@ namespace Bowling.Services
             return player;
         }
 
-        public async Task DeleteGame(int playerId)
+        public async Task Delete(int playerId)
         {
             var player = await _unitOfWork.PlayerRepository.GetByIdAsync(playerId);
             _unitOfWork.PlayerRepository.Remove(player);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<Player>> GetAll()
+        public async Task<IEnumerable<Player>> FindAll()
         {
             return await _unitOfWork.PlayerRepository.GetAllAsync();
         }
 
-        public async Task<IEnumerable<Player>> GetAllByGameId(int gameId)
+        public async Task<IEnumerable<Player>> FindAllByGameId(int gameId)
         {
             var players = await _unitOfWork.PlayerRepository.GetAsync(filter: p => p.GameId == gameId);
             return players;
         }
 
-        public async Task<Player> GetPlayerById(int id)
+        public async Task<Player> FindById(int id)
         {
             return await _unitOfWork.PlayerRepository.GetByIdAsync(id);
         }
 
-        public async Task<Player> UpdatePlayer(int playerToBeUpdatedId, Player newPlayerValues)
+        public async Task<Player> Update(int playerToBeUpdatedId, Player newPlayerValues)
         {
             Player player = await _unitOfWork.PlayerRepository.GetByIdAsync(playerToBeUpdatedId);
 

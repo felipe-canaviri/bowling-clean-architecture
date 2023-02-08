@@ -13,7 +13,7 @@ namespace Bowling.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Game> CreateGame(Game newGame)
+        public async Task<Game> Save(Game newGame)
         {
             await _unitOfWork.GameRepository.AddAsync(newGame);
             await _unitOfWork.CommitAsync();            
@@ -21,29 +21,29 @@ namespace Bowling.Services
             return newGame;
         }
 
-        public async Task DeleteGame(int gameId)
+        public async Task Delete(int gameId)
         {
             Game game = await _unitOfWork.GameRepository.GetByIdAsync(gameId);
             _unitOfWork.GameRepository.Remove(game);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<Game>> GetAll()
+        public async Task<IEnumerable<Game>> FindAll()
         {
             return await _unitOfWork.GameRepository.GetAllAsync();
         }
 
-        public async Task<Game> GetGameById(int id)
+        public async Task<Game> FindById(int id)
         {
             return await _unitOfWork.GameRepository.GetByIdAsync(id);
         }
 
-        public Task<Game> GetScore(int gameId, int playerId)
+        public async Task<IEnumerable<Scores>> GetScore(int gameId, int playerId)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.ScoresRepository.GetScoresByGameAndPlayerAsync(gameId, playerId);
         }
 
-        public async Task<Game> UpdateGame(int GameToBeUpdatedId, Game newGameValues)
+        public async Task<Game> Update(int GameToBeUpdatedId, Game newGameValues)
         {
             Game game = await _unitOfWork.GameRepository.GetByIdAsync(GameToBeUpdatedId);
 

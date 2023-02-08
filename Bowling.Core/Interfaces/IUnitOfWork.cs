@@ -7,6 +7,7 @@ namespace Bowling.Core.Interfaces
         IGameRepository GameRepository { get; }
         IPlayerRepository PlayerRepository { get; }
         ITurnRepository TurnRepository { get; }
+        IScoresRepository ScoresRepository { get; }
 
         Task<int> CommitAsync();
     }

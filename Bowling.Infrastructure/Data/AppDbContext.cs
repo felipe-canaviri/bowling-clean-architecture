@@ -9,6 +9,7 @@ namespace Bowling.Infrastructure.Data
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Turn> Turns { get; set; }
+        public DbSet<Scores> Scores { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -17,6 +18,7 @@ namespace Bowling.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new GameConfiguration());
             modelBuilder.ApplyConfiguration(new PlayerConfiguration());
             modelBuilder.ApplyConfiguration(new TurnConfiguration());
+            modelBuilder.ApplyConfiguration(new ScoresConfiguration());
         }
     }
 }

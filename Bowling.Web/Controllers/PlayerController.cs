@@ -22,7 +22,7 @@ namespace Bowling.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlayerModel>>> GetAll()
         {
-            var players = await _playerService.GetAll();
+            var players = await _playerService.FindAll();
             var models = _mapper.Map<IEnumerable<Player>, IEnumerable<PlayerModel>>(players);
 
             return Ok(models);
@@ -31,7 +31,7 @@ namespace Bowling.Web.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PlayerModel>> Get(int id)
         {
-            var player = await _playerService.GetPlayerById(id);
+            var player = await _playerService.FindById(id);
             var model = _mapper.Map<Player, PlayerModel>(player);
 
             return Ok(model);
@@ -40,7 +40,7 @@ namespace Bowling.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<PlayerModel>> Create([FromBody] PlayerModel newPlayer)
         {
-            var player = await _playerService.CreatePlayer(_mapper.Map<PlayerModel, Player>(newPlayer));
+            var player = await _playerService.Save(_mapper.Map<PlayerModel, Player>(newPlayer));
             var model = _mapper.Map<Player, PlayerModel>(player);
 
             return CreatedAtAction(nameof(Get), new { id = player.Id }, model);
@@ -49,7 +49,7 @@ namespace Bowling.Web.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<PlayerModel>> Update(int id, [FromBody] PlayerModel updatedPlayer)
         {
-            var player = await _playerService.UpdatePlayer(id, _mapper.Map<PlayerModel, Player>(updatedPlayer));
+            var player = await _playerService.Update(id, _mapper.Map<PlayerModel, Player>(updatedPlayer));
 
             return Ok(_mapper.Map<Player, PlayerModel>(player));
         }

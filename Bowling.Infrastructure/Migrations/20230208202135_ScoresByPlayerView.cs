@@ -12,15 +12,15 @@ namespace Bowling.Infrastructure.Migrations
         {
             migrationBuilder.Sql(@"CREATE OR REPLACE VIEW public.scores
 AS SELECT p1.""GameId"",
-    p1.""Id"",
+    p1.""Id"" as PlayerId,
     p1.""Name"",
-    s.score
+    s.score as Score
    FROM ""Players"" p1
      LEFT JOIN ( SELECT p.""Id"",
             sum(t.""FirstThrowing"" + t.""SecondThrowing"" + t.""ThirdThrowing"") AS score
            FROM ""Players"" p
              LEFT JOIN ""Turns"" t ON t.""PlayerId"" = p.""Id""
-          GROUP BY p.""Id"") s ON p1.""Id"" = s.""Id""; ");
+          GROUP BY p.""Id"") s ON p1.""Id"" = s.""Id"";");
         }
 
         /// <inheritdoc />

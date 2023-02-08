@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bowling.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230208200450_ScoresByPlayerView")]
+    [Migration("20230208202135_ScoresByPlayerView")]
     partial class ScoresByPlayerView
     {
         /// <inheritdoc />

@@ -4,12 +4,12 @@ namespace Bowling.Core.Interfaces.Services
 {
     public interface IGameService
     {
-        Task<Game> GetGameById(int id);
-        Task<IEnumerable<Game>> GetAll();
-        Task<Game> CreateGame(Game newGame);
-        Task<Game> UpdateGame(int gameToBeUpdatedId, Game newGameValues);
-        Task DeleteGame(int gameId);
+        Task<Game> FindById(int id);
+        Task<IEnumerable<Game>> FindAll();
+        Task<Game> Save(Game newGame);
+        Task<Game> Update(int gameToBeUpdatedId, Game newGameValues);
+        Task Delete(int gameId);
 
-        Task<Game> GetScore(int gameId, int playerId);
+        Task<IEnumerable<Scores>> GetScore(int gameId, int playerId);
     }
 }

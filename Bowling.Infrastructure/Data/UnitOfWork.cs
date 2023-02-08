@@ -10,6 +10,7 @@ namespace Bowling.Infrastructure.Data
         private GameRepository _gameRepository;
         private PlayerRepository _playerRepository;
         private TurnRepository _turnRepository;
+        private ScoresRepository _scoresRepository;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -21,6 +22,8 @@ namespace Bowling.Infrastructure.Data
         public IPlayerRepository PlayerRepository => _playerRepository??= new PlayerRepository(_context);
 
         public ITurnRepository TurnRepository => _turnRepository ??= new TurnRepository(_context);
+
+        public IScoresRepository ScoresRepository => _scoresRepository ??= new ScoresRepository(_context);
 
         public async Task<int> CommitAsync()
         {

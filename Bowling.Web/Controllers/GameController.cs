@@ -23,7 +23,7 @@ namespace Bowling.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GameModel>>> GetAll()
         {
-            var games = await _gameService.GetAll();
+            var games = await _gameService.FindAll();
             var models = _mapper.Map<IEnumerable<Game>, IEnumerable<GameModel>>(games);
 
             return Ok(models);
@@ -32,19 +32,18 @@ namespace Bowling.Web.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GameModel>> Get(int id)
         {
-            var game = await _gameService.GetGameById(id);
+            var game = await _gameService.FindById(id);
             var model = _mapper.Map<Game, GameModel>(game);
 
             return Ok(model);
         }
 
         [HttpGet("{id}/player/{playerId}")]
-        public async Task<ActionResult<GameModel>> GetScore(int id, int playerId)
+        public async Task<ActionResult<IEnumerable<Scores>>> GetScores(int id, int playerId)
         {
-            var game = await _gameService.GetGameById(id);
-            var model = _mapper.Map<Game, GameModel>(game);
+            var scores = await _gameService.GetScore(id, playerId);            
 
-            return Ok(model);
+            return Ok(scores);
         }
 
         // POST: GameController/Create
@@ -55,7 +54,7 @@ namespace Bowling.Web.Controllers
                 CreatedAt = DateTime.UtcNow,
                 Status = (int)GameStatus.New
             };
-            game = await _gameService.CreateGame(game);
+            game = await _gameService.Save(game);
             var model = _mapper.Map<Game, GameModel>(game);
 
             return CreatedAtAction(nameof(Get), new { id = game.Id }, model);
@@ -64,7 +63,7 @@ namespace Bowling.Web.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<GameModel>> Update(int id, [FromBody] GameModel gameModel)
         {
-            var game = await _gameService.UpdateGame(id, _mapper.Map<GameModel, Game>(gameModel));
+            var game = await _gameService.Update(id, _mapper.Map<GameModel, Game>(gameModel));
 
             return Ok(_mapper.Map<Game, GameModel>(game));
         }

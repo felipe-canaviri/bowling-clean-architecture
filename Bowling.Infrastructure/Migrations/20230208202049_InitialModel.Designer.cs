@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bowling.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230208195920_InitialModel")]
+    [Migration("20230208202049_InitialModel")]
     partial class InitialModel
     {
         /// <inheritdoc />
