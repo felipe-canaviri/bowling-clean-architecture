@@ -13,6 +13,8 @@ namespace Bowling.Infrastructure.Data.Configurations
 
             builder.Property(x => x.FirstThrowing);
             builder.Property(x => x.SecondThrowing);
+            builder.Property(x => x.ThirdThrowing);
+            builder.Property(x => x.TurnNumber);
 
             builder.ToTable("Turns");
         }

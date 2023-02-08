@@ -9,7 +9,7 @@ namespace Bowling.Core.Interfaces.Services
         Task<IEnumerable<Player>> GetAll();
         Task<IEnumerable<Player>> GetAllByGameId(int gameId);
         Task<Player> CreatePlayer(Player player);
-        Task<Player> UpdateGame(int playerToBeUpdatedId, Player newPlayerValues);
+        Task<Player> UpdatePlayer(int playerToBeUpdatedId, Player newPlayerValues);
         Task DeleteGame(int playerId);
     }
 }

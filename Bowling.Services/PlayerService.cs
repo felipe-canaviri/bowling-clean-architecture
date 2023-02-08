@@ -49,9 +49,18 @@ namespace Bowling.Services
             return await _unitOfWork.PlayerRepository.GetByIdAsync(id);
         }
 
-        public Task<Player> UpdateGame(int playerToBeUpdatedId, Player newPlayerValues)
+        public async Task<Player> UpdatePlayer(int playerToBeUpdatedId, Player newPlayerValues)
         {
-            throw new NotImplementedException();
+            Player player = await _unitOfWork.PlayerRepository.GetByIdAsync(playerToBeUpdatedId);
+
+            if (player == null)
+                throw new ArgumentException("Invalid player ID while updating");
+
+            player.Name = newPlayerValues.Name;
+
+            await _unitOfWork.CommitAsync();
+
+            return await _unitOfWork.PlayerRepository.GetByIdAsync(playerToBeUpdatedId);
         }
     }
 }

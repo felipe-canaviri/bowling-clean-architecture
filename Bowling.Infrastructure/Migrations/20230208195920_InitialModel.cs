@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -32,7 +33,6 @@ namespace Bowling.Infrastructure.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    Score = table.Column<int>(type: "integer", nullable: false),
                     GameId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -54,6 +54,8 @@ namespace Bowling.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FirstThrowing = table.Column<int>(type: "integer", nullable: false),
                     SecondThrowing = table.Column<int>(type: "integer", nullable: false),
+                    ThirdThrowing = table.Column<int>(type: "integer", nullable: false),
+                    TurnNumber = table.Column<int>(type: "integer", nullable: false),
                     PlayerId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

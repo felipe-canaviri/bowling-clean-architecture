@@ -8,7 +8,7 @@ namespace Bowling.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class GameController : Controller
+    public class GameController : ControllerBase
     {
         private readonly IGameService _gameService;
         private readonly IMapper _mapper;
@@ -31,6 +31,15 @@ namespace Bowling.Web.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<GameModel>> Get(int id)
+        {
+            var game = await _gameService.GetGameById(id);
+            var model = _mapper.Map<Game, GameModel>(game);
+
+            return Ok(model);
+        }
+
+        [HttpGet("{id}/player/{playerId}")]
+        public async Task<ActionResult<GameModel>> GetScore(int id, int playerId)
         {
             var game = await _gameService.GetGameById(id);
             var model = _mapper.Map<Game, GameModel>(game);

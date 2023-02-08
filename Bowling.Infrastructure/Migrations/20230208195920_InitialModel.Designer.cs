@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bowling.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230207213727_InitialModel")]
+    [Migration("20230208195920_InitialModel")]
     partial class InitialModel
     {
         /// <inheritdoc />
@@ -60,9 +60,6 @@ namespace Bowling.Infrastructure.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
-                    b.Property<int>("Score")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("GameId");
@@ -85,6 +82,12 @@ namespace Bowling.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("SecondThrowing")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ThirdThrowing")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TurnNumber")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

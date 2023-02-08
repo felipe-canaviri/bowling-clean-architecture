@@ -22,6 +22,7 @@ builder.Services.AddScoped(typeof(IPlayerRepository), typeof(PlayerRepository));
 builder.Services.AddScoped(typeof(ITurnRepository), typeof(TurnRepository));
 
 builder.Services.AddScoped(typeof(IGameService), typeof(GameService));
+builder.Services.AddScoped(typeof(IPlayerService), typeof(PlayerService));
 
 
 builder.Services.AddControllers();
