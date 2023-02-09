@@ -30,6 +30,7 @@ builder.Services.AddScoped(typeof(IScoreService), typeof(ScoreService));
 
 
 builder.Services.AddControllers();
+builder.Services.AddResponseCaching();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -62,5 +63,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseResponseCaching();
 
 app.Run();

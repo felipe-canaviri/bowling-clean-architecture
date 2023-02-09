@@ -62,6 +62,7 @@
         <member name="M:Bowling.Web.Controllers.ScoreController.GetScores(System.Int32,System.Int32)">
             <summary>
             Recovers the current score for a given player in the current game.
+            This endpoint is being cached in case there are very frequent request in a short period of time.
             </summary>
             <param name="id">The game identifier.</param>
             <param name="playerId">The player id </param>
