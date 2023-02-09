@@ -19,7 +19,7 @@ namespace Bowling.Infrastructure.Repositories
         public virtual async Task<IEnumerable<Scores>> GetScoresByGameAndPlayerAsync(int gameId, int playerId)
         {
             IQueryable<Scores> query = dbSet;
-            query = query.Where(x => x.PlayerId == playerId && x.GameId == gameId);
+            query = query.Where(x => x.playerid == playerId && x.GameId == gameId);
 
             return await query.ToListAsync();
         }

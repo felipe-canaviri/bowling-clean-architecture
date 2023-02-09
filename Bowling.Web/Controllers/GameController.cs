@@ -19,7 +19,10 @@ namespace Bowling.Web.Controllers
             _mapper = mapper;
         }
 
-        // GET: GameController
+        /// <summary>
+        /// Retrieves all existing games in the app.
+        /// </summary>
+        /// <returns>A collection of GameModel.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GameModel>>> GetAll()
         {
@@ -29,6 +32,11 @@ namespace Bowling.Web.Controllers
             return Ok(models);
         }
 
+        /// <summary>
+        /// Retrieves the data of a single game given its identifier.
+        /// </summary>
+        /// <param name="id">the game identifier to be recovered.</param>
+        /// <returns>An instance of GameModel</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<GameModel>> Get(int id)
         {
@@ -38,15 +46,10 @@ namespace Bowling.Web.Controllers
             return Ok(model);
         }
 
-        [HttpGet("{id}/player/{playerId}")]
-        public async Task<ActionResult<IEnumerable<Scores>>> GetScores(int id, int playerId)
-        {
-            var scores = await _gameService.GetScore(id, playerId);            
-
-            return Ok(scores);
-        }
-
-        // POST: GameController/Create
+        /// <summary>
+        /// Creates a new game in the app. It's not required any input for this action.
+        /// </summary>
+        /// <returns>An instance of GameModel.</returns>
         [HttpPost]        
         public async Task<ActionResult<GameModel>> Create()
         {
@@ -60,6 +63,12 @@ namespace Bowling.Web.Controllers
             return CreatedAtAction(nameof(Get), new { id = game.Id }, model);
         }
 
+        /// <summary>
+        /// Updates the data for a given game.
+        /// </summary>
+        /// <param name="id">The game identifier to be updated.</param>
+        /// <param name="gameModel">The new data for the existing game.</param>
+        /// <returns>An instance of GameModel with the new updated data.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<GameModel>> Update(int id, [FromBody] GameModel gameModel)
         {

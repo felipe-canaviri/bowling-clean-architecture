@@ -19,6 +19,10 @@ namespace Bowling.Web.Controllers
             _playerService = playerService;
         }
 
+        /// <summary>
+        /// Retrieves all players existing in the app.
+        /// </summary>
+        /// <returns>A collection of PlayerModel</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlayerModel>>> GetAll()
         {
@@ -28,6 +32,11 @@ namespace Bowling.Web.Controllers
             return Ok(models);
         }
 
+        /// <summary>
+        /// Retrieves the actual information for a specific player given its identifier.
+        /// </summary>
+        /// <param name="id">The player identifier.</param>
+        /// <returns>An instance of PlayerModel with the requested data.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PlayerModel>> Get(int id)
         {
@@ -37,6 +46,11 @@ namespace Bowling.Web.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Creates a new player in the app. This player will belong to the specified game.
+        /// </summary>
+        /// <param name="newPlayer">Input with all the information of the player</param>
+        /// <returns>An instance of PlayerModel with the recently created data.</returns>
         [HttpPost]
         public async Task<ActionResult<PlayerModel>> Create([FromBody] PlayerModel newPlayer)
         {
@@ -46,6 +60,12 @@ namespace Bowling.Web.Controllers
             return CreatedAtAction(nameof(Get), new { id = player.Id }, model);
         }
 
+        /// <summary>
+        /// Updates the information from a given player.
+        /// </summary>
+        /// <param name="id">The player indentifier</param>
+        /// <param name="updatedPlayer">The incoming new information for the player.</param>
+        /// <returns>An instance of PlayerModel with the updated data.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<PlayerModel>> Update(int id, [FromBody] PlayerModel updatedPlayer)
         {

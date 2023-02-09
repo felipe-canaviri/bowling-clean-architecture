@@ -10,9 +10,9 @@ namespace Bowling.Infrastructure.Data.Configurations
         {
             builder.HasNoKey();
             builder.Property(x => x.GameId);
-            builder.Property(x => x.PlayerId);
+            builder.Property(x => x.playerid);
             builder.Property(x => x.Name);
-            builder.Property(x => x.Score);            
+            builder.Property(x => x.score);            
 
             builder.ToTable("scores");
         }

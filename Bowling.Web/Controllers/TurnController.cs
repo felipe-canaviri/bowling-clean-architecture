@@ -19,6 +19,11 @@ namespace Bowling.Web.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Retrieves the actual information for a specific turn given its identifier.
+        /// </summary>
+        /// <param name="id">The turn identifier.</param>
+        /// <returns>An instance of TurnModel with the requested data.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TurnModel>> Get(int id)
         {
@@ -28,6 +33,11 @@ namespace Bowling.Web.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Creates a new turn for a player with the gaps to fill the different throwings. 
+        /// </summary>
+        /// <param name="model">Input with all the information of the Turn</param>
+        /// <returns>An instance of TurnModel with the recently created data.</returns>
         [HttpPost]
         public async Task<ActionResult<TurnModel>> Create([FromBody] TurnModel model)
         {
@@ -37,6 +47,12 @@ namespace Bowling.Web.Controllers
             return CreatedAtAction(nameof(Get), new { id = turn.Id }, model);
         }
 
+        /// <summary>
+        /// Allows to update an existing turn with information of new throwing's result.
+        /// </summary>
+        /// <param name="id">The Turn indentifier</param>
+        /// <param name="model">The incoming new information for the Turn (new throwing's result).</param>
+        /// <returns>An instance of TurnModel with the updated data.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<TurnModel>> Update(int id, [FromBody] TurnModel model)
         {

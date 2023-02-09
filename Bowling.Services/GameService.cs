@@ -38,11 +38,6 @@ namespace Bowling.Services
             return await _unitOfWork.GameRepository.GetByIdAsync(id);
         }
 
-        public async Task<IEnumerable<Scores>> GetScore(int gameId, int playerId)
-        {
-            return await _unitOfWork.ScoresRepository.GetScoresByGameAndPlayerAsync(gameId, playerId);
-        }
-
         public async Task<Game> Update(int GameToBeUpdatedId, Game newGameValues)
         {
             Game game = await _unitOfWork.GameRepository.GetByIdAsync(GameToBeUpdatedId);

@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bowling.Web</name>
+    </assembly>
+    <members>
+        <member name="M:Bowling.Web.Controllers.GameController.GetAll">
+            <summary>
+            Retrieves all existing games in the app.
+            </summary>
+            <returns>A collection of GameModel.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.GameController.Get(System.Int32)">
+            <summary>
+            Retrieves the data of a single game given its identifier.
+            </summary>
+            <param name="id">the game identifier to be recovered.</param>
+            <returns>An instance of GameModel</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.GameController.Create">
+            <summary>
+            Creates a new game in the app. It's not required any input for this action.
+            </summary>
+            <returns>An instance of GameModel.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.GameController.Update(System.Int32,Bowling.Web.Models.GameModel)">
+            <summary>
+            Updates the data for a given game.
+            </summary>
+            <param name="id">The game identifier to be updated.</param>
+            <param name="gameModel">The new data for the existing game.</param>
+            <returns>An instance of GameModel with the new updated data.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.PlayerController.GetAll">
+            <summary>
+            Retrieves all players existing in the app.
+            </summary>
+            <returns>A collection of PlayerModel</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.PlayerController.Get(System.Int32)">
+            <summary>
+            Retrieves the actual information for a specific player given its identifier.
+            </summary>
+            <param name="id">The player identifier.</param>
+            <returns>An instance of PlayerModel with the requested data.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.PlayerController.Create(Bowling.Web.Models.PlayerModel)">
+            <summary>
+            Creates a new player in the app. This player will belong to the specified game.
+            </summary>
+            <param name="newPlayer">Input with all the information of the player</param>
+            <returns>An instance of PlayerModel with the recently created data.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.PlayerController.Update(System.Int32,Bowling.Web.Models.PlayerModel)">
+            <summary>
+            Updates the information from a given player.
+            </summary>
+            <param name="id">The player indentifier</param>
+            <param name="updatedPlayer">The incoming new information for the player.</param>
+            <returns>An instance of PlayerModel with the updated data.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.ScoreController.GetScores(System.Int32,System.Int32)">
+            <summary>
+            Recovers the current score for a given player in the current game.
+            </summary>
+            <param name="id">The game identifier.</param>
+            <param name="playerId">The player id </param>
+            <returns>A collection of scores for a given player</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.TurnController.Get(System.Int32)">
+            <summary>
+            Retrieves the actual information for a specific turn given its identifier.
+            </summary>
+            <param name="id">The turn identifier.</param>
+            <returns>An instance of TurnModel with the requested data.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.TurnController.Create(Bowling.Web.Models.TurnModel)">
+            <summary>
+            Creates a new turn for a player with the gaps to fill the different throwings. 
+            </summary>
+            <param name="model">Input with all the information of the Turn</param>
+            <returns>An instance of TurnModel with the recently created data.</returns>
+        </member>
+        <member name="M:Bowling.Web.Controllers.TurnController.Update(System.Int32,Bowling.Web.Models.TurnModel)">
+            <summary>
+            Allows to update an existing turn with information of new throwing's result.
+            </summary>
+            <param name="id">The Turn indentifier</param>
+            <param name="model">The incoming new information for the Turn (new throwing's result).</param>
+            <returns>An instance of TurnModel with the updated data.</returns>
+        </member>
+    </members>
+</doc>
