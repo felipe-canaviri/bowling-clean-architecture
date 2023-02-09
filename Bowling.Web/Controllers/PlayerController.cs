@@ -24,7 +24,8 @@ namespace Bowling.Web.Controllers
         /// </summary>
         /// <returns>A collection of PlayerModel</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PlayerModel>>> GetAll()
+        [ProducesResponseType(typeof(IEnumerable<PlayerModel>), 200)]
+        public async Task<ActionResult> GetAll()
         {
             var players = await _playerService.FindAll();
             var models = _mapper.Map<IEnumerable<Player>, IEnumerable<PlayerModel>>(players);
@@ -38,7 +39,8 @@ namespace Bowling.Web.Controllers
         /// <param name="id">The player identifier.</param>
         /// <returns>An instance of PlayerModel with the requested data.</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<PlayerModel>> Get(int id)
+        [ProducesResponseType(typeof(PlayerModel), 200)]
+        public async Task<ActionResult> Get(int id)
         {
             var player = await _playerService.FindById(id);
             var model = _mapper.Map<Player, PlayerModel>(player);
@@ -52,12 +54,13 @@ namespace Bowling.Web.Controllers
         /// <param name="newPlayer">Input with all the information of the player</param>
         /// <returns>An instance of PlayerModel with the recently created data.</returns>
         [HttpPost]
-        public async Task<ActionResult<PlayerModel>> Create([FromBody] PlayerModel newPlayer)
+        [ProducesResponseType(typeof(PlayerModel), 200)]
+        public async Task<ActionResult> Create([FromBody] PlayerModel newPlayer)
         {
             var player = await _playerService.Save(_mapper.Map<PlayerModel, Player>(newPlayer));
             var model = _mapper.Map<Player, PlayerModel>(player);
 
-            return CreatedAtAction(nameof(Get), new { id = player.Id }, model);
+            return Ok(model);
         }
 
         /// <summary>

@@ -24,7 +24,8 @@ namespace Bowling.Web.Controllers
         /// </summary>
         /// <returns>A collection of GameModel.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GameModel>>> GetAll()
+        [ProducesResponseType(typeof(IEnumerable<GameModel>), 200)]
+        public async Task<ActionResult> GetAll()
         {
             var games = await _gameService.FindAll();
             var models = _mapper.Map<IEnumerable<Game>, IEnumerable<GameModel>>(games);
@@ -38,7 +39,8 @@ namespace Bowling.Web.Controllers
         /// <param name="id">the game identifier to be recovered.</param>
         /// <returns>An instance of GameModel</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<GameModel>> Get(int id)
+        [ProducesResponseType(typeof(GameModel), 200)]
+        public async Task<ActionResult> Get(int id)
         {
             var game = await _gameService.FindById(id);
             var model = _mapper.Map<Game, GameModel>(game);
@@ -50,8 +52,9 @@ namespace Bowling.Web.Controllers
         /// Creates a new game in the app. It's not required any input for this action.
         /// </summary>
         /// <returns>An instance of GameModel.</returns>
-        [HttpPost]        
-        public async Task<ActionResult<GameModel>> Create()
+        [HttpPost]
+        [ProducesResponseType(typeof(GameModel), 200)]
+        public async Task<ActionResult> Create()
         {
             var game = new Game() { 
                 CreatedAt = DateTime.UtcNow,
@@ -60,7 +63,7 @@ namespace Bowling.Web.Controllers
             game = await _gameService.Save(game);
             var model = _mapper.Map<Game, GameModel>(game);
 
-            return CreatedAtAction(nameof(Get), new { id = game.Id }, model);
+            return Ok(model);
         }
 
         /// <summary>
@@ -70,7 +73,8 @@ namespace Bowling.Web.Controllers
         /// <param name="gameModel">The new data for the existing game.</param>
         /// <returns>An instance of GameModel with the new updated data.</returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult<GameModel>> Update(int id, [FromBody] GameModel gameModel)
+        [ProducesResponseType(typeof(GameModel), 200)]
+        public async Task<ActionResult> Update(int id, [FromBody] GameModel gameModel)
         {
             var game = await _gameService.Update(id, _mapper.Map<GameModel, Game>(gameModel));
 

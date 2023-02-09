@@ -3,21 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling.Web", "Bowling.Web\Bowling.Web.csproj", "{E6965C43-6F3E-4EBE-BA34-86483611B96D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowling.Web", "Bowling.Web\Bowling.Web.csproj", "{E6965C43-6F3E-4EBE-BA34-86483611B96D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling.Core", "Bowling.Core\Bowling.Core.csproj", "{DFC234D9-BF27-4EB5-9C35-981E140E647B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowling.Core", "Bowling.Core\Bowling.Core.csproj", "{DFC234D9-BF27-4EB5-9C35-981E140E647B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling.Services", "Bowling.Services\Bowling.Services.csproj", "{5B7E2379-7D34-457E-8713-551235E2175E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowling.Services", "Bowling.Services\Bowling.Services.csproj", "{5B7E2379-7D34-457E-8713-551235E2175E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling.Infrastructure", "Bowling.Infrastructure\Bowling.Infrastructure.csproj", "{094C3D4F-2142-4B68-8380-4FBB42FB0330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowling.Infrastructure", "Bowling.Infrastructure\Bowling.Infrastructure.csproj", "{094C3D4F-2142-4B68-8380-4FBB42FB0330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling.Web.Tests", "Bowling.Web.Tests\Bowling.Web.Tests.csproj", "{B046D13C-B87A-4D32-97C2-D241F8198A21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E6965C43-6F3E-4EBE-BA34-86483611B96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +35,15 @@ Global
 		{094C3D4F-2142-4B68-8380-4FBB42FB0330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{094C3D4F-2142-4B68-8380-4FBB42FB0330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{094C3D4F-2142-4B68-8380-4FBB42FB0330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B046D13C-B87A-4D32-97C2-D241F8198A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B046D13C-B87A-4D32-97C2-D241F8198A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B046D13C-B87A-4D32-97C2-D241F8198A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B046D13C-B87A-4D32-97C2-D241F8198A21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A957ADE-A9BD-4D26-A12F-CF94A0846D2A}
 	EndGlobalSection
 EndGlobal
