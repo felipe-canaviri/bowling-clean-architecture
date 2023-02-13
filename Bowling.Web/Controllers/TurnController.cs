@@ -25,7 +25,8 @@ namespace Bowling.Web.Controllers
         /// <param name="id">The turn identifier.</param>
         /// <returns>An instance of TurnModel with the requested data.</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<TurnModel>> Get(int id)
+        [ProducesResponseType(typeof(TurnModel), 200)]
+        public async Task<ActionResult> Get(int id)
         {
             var turn = await _turnService.FindById(id);
             var model = _mapper.Map<Turn, TurnModel>(turn);
@@ -39,12 +40,13 @@ namespace Bowling.Web.Controllers
         /// <param name="model">Input with all the information of the Turn</param>
         /// <returns>An instance of TurnModel with the recently created data.</returns>
         [HttpPost]
-        public async Task<ActionResult<TurnModel>> Create([FromBody] TurnModel model)
+        [ProducesResponseType(typeof(TurnModel), 200)]
+        public async Task<ActionResult> Create([FromBody] TurnModel model)
         {
             var turn = await _turnService.Save(_mapper.Map<TurnModel, Turn>(model));
             var turnModel = _mapper.Map<Turn, TurnModel>(turn);
 
-            return CreatedAtAction(nameof(Get), new { id = turn.Id }, model);
+            return Ok(turnModel);
         }
 
         /// <summary>
@@ -54,7 +56,8 @@ namespace Bowling.Web.Controllers
         /// <param name="model">The incoming new information for the Turn (new throwing's result).</param>
         /// <returns>An instance of TurnModel with the updated data.</returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult<TurnModel>> Update(int id, [FromBody] TurnModel model)
+        [ProducesResponseType(typeof(TurnModel), 200)]
+        public async Task<ActionResult> Update(int id, [FromBody] TurnModel model)
         {
             var game = await _turnService.Update(id, _mapper.Map<TurnModel, Turn>(model));
 

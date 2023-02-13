@@ -2,8 +2,8 @@
 using Bowling.Core.Entities;
 using Bowling.Core.Interfaces.Services;
 using Bowling.Web.Controllers;
-using Bowling.Web.Mappers;
 using Bowling.Web.Models;
+using Bowling.Web.Tests.Mappers;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -17,11 +17,7 @@ namespace Bowling.Web.Tests.Controllers
         public GameControllerTest()
         {
             _mockGameService = new Mock<IGameService>();
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new ProfilesMapper());
-            });
-            _mapper = mappingConfig.CreateMapper();
+            _mapper = MapperMockGenerator.CreateMockMapper();
         }
 
         [Fact]

@@ -2,8 +2,8 @@
 using Bowling.Core.Entities;
 using Bowling.Core.Interfaces.Services;
 using Bowling.Web.Controllers;
-using Bowling.Web.Mappers;
 using Bowling.Web.Models;
+using Bowling.Web.Tests.Mappers;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -18,11 +18,7 @@ namespace Bowling.Web.Tests.Controllers
         public PlayerControllerTest()
         {
             _mockService = new Mock<IPlayerService>();
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new ProfilesMapper());
-            });
-            _mapper = mappingConfig.CreateMapper();
+            _mapper = MapperMockGenerator.CreateMockMapper();
         }
 
         [Fact]
@@ -78,6 +74,35 @@ namespace Bowling.Web.Tests.Controllers
             playerResult.Id.Should().Be(2);
             playerResult.GameId.Should().Be(1);
             playerResult.Name.Should().Be("Test");
+        }
+
+        [Fact]
+        public async Task ShouldUpdateAnExistingPlayer()
+        {
+            var newPlayer = new Player
+            {
+                Id = 1,
+                GameId = 1,
+                Name = "Test"                
+            };
+            var updatedPlayer = new Player { Id = 1, GameId = 1, Name = "Bart" };
+            _mockService.Setup(x => x.Save(It.IsAny<Player>())).ReturnsAsync(newPlayer);
+            _mockService.Setup(x => x.Update(It.IsAny<int>(), It.IsAny<Player>())).ReturnsAsync(updatedPlayer);
+
+            var controller = new PlayerController(_mapper, _mockService.Object);
+
+            var result = await controller.Create(new PlayerModel()) as OkObjectResult;
+            var newPlayerModel = result.Value as PlayerModel;
+
+            // Update the new model with new values
+            newPlayerModel.Name = "Bart";
+            result = await controller.Update(1, newPlayerModel) as OkObjectResult;
+            var updatedModel = result.Value as PlayerModel;
+
+            updatedModel.Should().NotBeNull();
+            updatedModel.Id.Should().Be(1);
+            updatedModel.GameId.Should().Be(1);
+            updatedModel.Name.Should().Be("Bart");
         }
 
         private IEnumerable<Player> GeneratePlayers()

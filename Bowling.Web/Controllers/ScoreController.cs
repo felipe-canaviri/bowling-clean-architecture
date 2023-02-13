@@ -23,8 +23,9 @@ namespace Bowling.Web.Controllers
         /// <param name="playerId">The player id </param>
         /// <returns>A collection of scores for a given player</returns>
         [HttpGet("{id}/player/{playerId}")]
+        [ProducesResponseType(typeof(IEnumerable<Scores>), 200)]
         [ResponseCache(Duration = 30, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new string[] { "id", "playerId" })]
-        public async Task<ActionResult<IEnumerable<Scores>>> GetScores(int id, int playerId)
+        public async Task<ActionResult> GetScores(int id, int playerId)
         {
             var scores = await _scoreService.GetScore(id, playerId);
 

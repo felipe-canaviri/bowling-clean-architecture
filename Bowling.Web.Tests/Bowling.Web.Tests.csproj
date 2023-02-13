@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Bowling.Core\Bowling.Core.csproj" />
     <ProjectReference Include="..\Bowling.Infrastructure\Bowling.Infrastructure.csproj" />
     <ProjectReference Include="..\Bowling.Services\Bowling.Services.csproj" />

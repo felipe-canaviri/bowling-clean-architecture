@@ -70,7 +70,8 @@ namespace Bowling.Web.Controllers
         /// <param name="updatedPlayer">The incoming new information for the player.</param>
         /// <returns>An instance of PlayerModel with the updated data.</returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult<PlayerModel>> Update(int id, [FromBody] PlayerModel updatedPlayer)
+        [ProducesResponseType(typeof(PlayerModel), 200)]
+        public async Task<ActionResult> Update(int id, [FromBody] PlayerModel updatedPlayer)
         {
             var player = await _playerService.Update(id, _mapper.Map<PlayerModel, Player>(updatedPlayer));
 
